@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Softtek P;rofile Viewer">
+    <meta name="author" content="Guillermo Ortiz">
+    <meta name="keywords" content="RWD, JS, CSS, HTML5">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta content="IE=Edge,chrome=1" http-equiv="x-ua-compatible">
+    <title>My Stk Profile</title>
+    <link rel="icon" href="img/favicon.ico?v=2" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style type="text/css">
+        .hide-control{
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="background-color:white;">
+    <div id="main-fixed-header">
+        <span id="logo-container"></span>
+        <span id="title-container">Software Engineer</span>
+    </div>
+    <div id="main-container">
+        <section class="section image" id="imgcontainer">
+            <figure class="photo">
+                <img src="img/simio-gun.jpeg" alt="Profile Picture">
+            </figure>
+        </section>
+        <section class="section" id="sec1">
+            <header>
+                <h1>Personal Info</h1>
+            </header>
+            <div class="info-container">
+                    <p><span id="spname">Guillermo Ortiz</span><input type="text" id="txtName" value="Guillermo Ortiz" class="hide-control input-text" /></p>
+                    <p>Monterrey, N.L. México</p>
+            </div>
+            <button id="btnPersonal">
+            <div class="ripple"></div>
+            edit
+            </button>
+        </section>
+        <section class="section" id="sec2">
+            <header>
+                <h1>Softtek Projects</h1>
+            </header>
+            <div class="info-container">
+                <p>Nova Southern University</p>
+                <p>SterlingBackCheck</p>
+            </div>
+            <button id="btnProjects">
+                <div class="ripple"></div>
+                edit
+            </button>
+        </section>
+        <section class="section" id="sec3">
+            <header>
+                <h1>Resume</h1>
+            </header>
+            <div class="info-container">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <button id="btnResume">
+                <div class="ripple"></div>
+                edit
+            </button>
+        </section>
+        <section class="section" id="sec4">
+            <head>
+                <h1>Contact Info</h1>
+            </head>
+            <div class="info-container">
+                <a href="tel:8116260630">(811) 626 0630</a>
+                <a href="mailto:guillermo.ortiz@softtek.com">guillermo.ortiz@softtek.com</a>
+                <a href="http://mx.linkedin.com/pub/guillermo-ortiz/" target="_blank">LinkedIn</a>
+            </div>
+            <button id="btnContact">
+                <div class="ripple"></div>
+                edit
+            </button>
+        </section>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $( document ).ready(function() {
+            addingEffect("bounceIn","title-container");
+            addingEffect("bounceInDown","imgcontainer");
+            addingEffect("bounceInLeft","sec1");
+            addingEffect("bounceInRight","sec2");
+            addingEffect("bounceInUp","sec3");
+            addingEffect("zoomInDown","sec4");
+
+            $('#btnPersonal').click(function(){
+                //Add the effect to the selector
+                addingEffectBtn('bounceInDown','zoomIn','#imgcontainer');
+                addingEffectBtn('bounceInLeft','bounceIn','#sec1');
+                addingEffectBtn('bounceIn','flash','#title-container');
+                addingEffectBtn('zoomIn','shake','#imgcontainer');
+
+                //Show or hide the input 
+                $("#txtName").toggleClass("hide-control");
+                //Show or hide the span
+                $("#spname").toggleClass("hide-control");
+            });
+        });
+
+        function addingEffect(effect,selector) {
+            $('#'+selector).addClass(effect + ' animated');
+        };
+
+        function addingEffectBtn(oldeffect, newEffect,selector) {
+            /*if ($(selector).hasClass("animated")){
+                
+            } 
+            else{
+                $("#"+selector).toggleClass(newEffect);
+            }*/
+            if ($(selector).hasClass("animated")){
+                $(selector).removeClass("animated");
+            }
+
+            if ($(selector).hasClass(oldeffect)){
+                $(selector).removeClass(oldeffect);    
+            }
+
+            if ($(selector).hasClass(newEffect)){
+                $(selector).removeClass(newEffect);    
+            }
+
+            $(selector).addClass(newEffect + " animated").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass("animated");
+                $(this).removeClass(newEffect);
+            });
+        };
+    </script>
+</body>
+
+</html>

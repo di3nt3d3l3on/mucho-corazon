@@ -1,0 +1,17 @@
+{
+  "name": "MuchoCorazon",
+  "version": "0.0.1",
+  "description": "Mucho Corazon Fotografia",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/di3nt3d3l3on/mucho-corazon"
+  },
+  "author": "Guillermo Ortiz",
+  "license": "no license",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "normalize.css": "3.0.3 "
+  },
+  "devDependencies": {}
+}
